@@ -1,6 +1,6 @@
 import os
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
-menu = {'0':{'1':'Nuevo Juego', '2':'Ultima Partida','3':'Agregar Palabras','4':'Ver tabla posiciones','9':'Salir'},'01':{'1':'1 vs CPU', '2':'2 vs CPU','3':'1 vs 1','9':'Menu Anterior'},'02':{'1':'Seguir Jugando', '9':'Menu Anterior'},'03':{'1':'Buscar Archivo', '9':'Menu Anterior'},'04':{'1':'Reset Posiciones', '9':'Menu Anterior'}}
+menu = {'0':{'1':'Nuevo Juego', '2':'Ultima Partida','3':'Agregar Palabras','4':'Ver tabla posiciones','9':'Salir'},'01':{'1':'1 vs CPU', '2':'2 vs CPU','3':'1 vs 1','9':'Menu Anterior'},'02':{'1':'Seguir Jugando', '9':'Menu Anterior'},'03':{'1':'Buscar Archivo', '9':'Menu Anterior'},'04':{'1':'Reset Posiciones', '9':'Menu Anterior'},'01':{'011':'Jugar','9':'Menu Anterior'}}
 #menuprincipal = {'1':'Nuevo Juego', '2':'Ultima Partida','3':'Agregar Palabras','4':'Ver tabla posiciones','9':'Salir'} 
 #menu1 = {'1':'1 vs CPU', '2':'2 vs CPU','3':'1 vs 1','9':'Menu Anterior'} 
 #menu2 = {'1':'Seguir Jugando', '9':'Menu Anterior'} 
@@ -12,10 +12,10 @@ menuactivo = menu[opcionmenu]
 opcion = '0'
 def mostrarmenu():
     clearConsole()
-    print(f"Menu:\n",opcionmenu)
+    print(f"Menu:",opcionmenu,"\n")
     for op in menuactivo:
-        print(f"",op,"-",menuactivo[op],"\n")
-    #print(menuactivo)
+        print(f"",op,"-",menuactivo[op],"       ")
+    print(f"---------------------------------\n")
 #------------------------------------------ fin mostrar menu
 def leeropcion():    
     control = True
@@ -25,7 +25,7 @@ def leeropcion():
         largo_cadena_ingresadas = len(valor_ingresado)
         if(largo_cadena_ingresadas == 0):
              print ("No se registro ningun ingreso. Recuerde que debe ingresar algunas de las opciones del menu y presionar enter.\n")
-             control = false
+             control = False
              break
         digito = valor_ingresado[0]     
         if(largo_cadena_ingresadas == 1):            
@@ -56,10 +56,10 @@ def cambiardemenu(opcion):
             #entonces tengo q volver al menu anterior
             opcionmenu = opcionmenu[0:profundidadmenu-1]
             menuactivo = menu[opcionmenu]
-        else:
-            opcionmenu = False
-            print(f"Saliendo\nGracias x jugar. Nos vemos Pronto.")        
-    elif opcion in menuactivo:        
+        else:            
+            opcionmenu = False            
+    elif opcion in menuactivo:
+        print(f"la opcion:",opcion,"opcionmenu",opcionmenu)
         if opcion != '9':
             opcionmenu = opcionmenu + opcion
             menuactivo = menu[opcionmenu]
@@ -69,13 +69,8 @@ def cambiardemenu(opcion):
             print(f"invalida:",opcion)
     else:
         print(f"Opcion invalida:",opcion)            
-    
 #------------------------------------------ fin cambiardemenu
+def cerrar():
+    clearConsole()
+    print(f"Saliendo\nGracias x jugar. Nos vemos Pronto.")        
         
-        
-    
-while opcionmenu != False:
-    mostrarmenu()
-    opcion = leeropcion()
-    cambiardemenu(opcion)
-print(f"esta linea es de control luego se borrara\nopcion es ", opcionmenu)
