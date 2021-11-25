@@ -42,5 +42,3 @@ def letra():
         if control == True:
             return letra
     return control
-valor = letra()
-print(valor)
