@@ -44,11 +44,12 @@ def imprimirparte():
                     print(" ",end="")
     
         
-print(f"La palabra es:")
-print(f" _ _ _ _ _ _")
-print()
-print(f"usted a cometido",errores,"errores")        
-imprimirparte()
-print()
-print(f"por favor ingrese una letra nueva:")
+# print(f"La palabra es:")
+# print(f" _ _ _ _ _ _")
+# print()
+# print(f"usted a cometido",errores,"errores")        
+# imprimirparte()
+# print()
+# print(f"por favor ingrese una letra nueva:")
         
+      
